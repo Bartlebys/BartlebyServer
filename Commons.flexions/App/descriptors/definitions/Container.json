@@ -1,0 +1,59 @@
+{
+  "name": "Container",
+  "definition": {
+    "nature":"UnManagedModel",
+    "description": "Bartleby's Synchronized File System: A container to store Boxes,Nodes,Blocks",
+    "properties": {
+      "password": {
+        "type": "string",
+        "description": "You can setup a password",
+        "supervisable": false
+      },
+      "boxes": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "Boxes",
+            "explicitType":"Box",
+            "default": "[Box]()",
+            "scope":"public",
+            "supervisable": false,
+            "serializable": true
+          }
+        }
+      },
+      "nodes": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "Nodes",
+            "explicitType":"Node",
+            "default": "[Node]()",
+            "scope":"public",
+            "supervisable": false,
+            "serializable": true
+          }
+        }
+      },
+      "blocks": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "Blocks",
+            "explicitType":"Block",
+            "default": "[Block]()",
+            "scope":"public",
+            "supervisable": false,
+            "serializable": true
+          }
+        }
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": false,
+      "undoable": false
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Box",
+  "definition": {
+    "description": "Bartleby's Synchronized File System: A box is a logical reference for Nodes and Blocks",
+    "properties": {
+      "isMounted": {
+        "type": "boolean",
+        "description": "Turned to true when the box is mounted (not serializable, not supervisable)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "assemblyInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an Assembly in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "volatile": {
+        "type": "boolean",
+        "description": "A volatile box is unmounted automatically",
+        "default": "true",
+        "supervisable": false,
+        "serializable": false
+      },
+      "uploadProgression": {
+        "schema": {
+          "description": "The upload Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.uploadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "downloadProgression": {
+        "schema": {
+          "description": "The Download Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.downloadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "assemblyProgression": {
+        "schema": {
+          "description": "The Assembly Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.downloadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "uploadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "downloadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": true,
+      "undoable": true
+    }
+  }
+}

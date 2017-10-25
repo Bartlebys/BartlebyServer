@@ -1,0 +1,38 @@
+{
+  "name": "Acknowledgment",
+  "definition": {
+    "nature": "UnManagedModel",
+    "explicitType":"Metrics",
+    "description": "Bartleby's Core: an object used to Acknowledge a Trigger",
+    "properties": {
+      "triggerIndex": {
+        "type": "integer",
+        "description": "The trigger index",
+        "default": -1,
+        "supervisable": false
+      },
+      "uids": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "The subjects UIDS",
+            "type": "string",
+            "default":"[String]()",
+            "supervisable": false
+          }
+        }
+      },"triggerRelayDuration":{
+        "description":"The triggerRelayDuration is computed server side it integrates the semaphore impact. (it can be used for QOS computation)",
+        "type":"double",
+        "default":"0",
+        "supervisable": false
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": false,
+      "undoable": false
+    }
+  }
+}

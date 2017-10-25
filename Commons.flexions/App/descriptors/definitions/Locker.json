@@ -1,0 +1,98 @@
+{
+  "name": "Locker",
+  "definition": {
+    "description": "Bartleby's Core: a locker",
+    "allOf": [
+      {
+        "type": "object",
+        "required": [
+          "spaceUID",
+          "username",
+          "password"
+        ],
+        "properties": {
+          "associatedDocumentUID": {
+            "type": "string",
+            "description": "The associated document UID.",
+            "cryptable":false
+          },
+          "subjectUID": {
+            "description": "The subject UID you want to lock",
+            "type": "string",
+            "default": "$Default.NO_UID",
+            "cryptable":false
+          },
+          "userUID": {
+            "description": "The userUID that can unlock the locker",
+            "type": "string",
+            "default": "$Default.NO_UID",
+            "cryptable":false
+          },
+          "mode": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "Locker.Mode",
+            "description": "the locker mode",
+            "enum": [
+              "autoDestructive",
+              "persistent"
+            ],
+            "default": ".autoDestructive"
+          },
+          "verificationMethod": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "Locker.VerificationMethod",
+            "description": "the locker mode",
+            "enum": [
+              "online",
+              "offline"
+            ],
+            "default": ".online"
+          },
+           "security": {
+             "type": "enum",
+             "instanceOf": "string",
+             "emumPreciseType": "Locker.Security",
+             "description": "the locker Security If set to .skipSecondaryAuthFactor mode the GetActivationCode will return the Locker (it skips second auth factor)",
+             "enum": [
+               "skipSecondaryAuthFactor",
+               "secondaryAuthFactorRequired"
+             ],
+             "default": ".secondaryAuthFactorRequired"
+          },
+          "code": {
+            "description": "This code should be cryptable / decryptable",
+            "type": "string",
+            "default": "$Bartleby.randomStringWithLength(6,signs:\"0123456789ABCDEFGHJKMNPQRZTUVW\")",
+            "cryptable":true
+          },
+          "numberOfAttempt": {
+            "description": "The number of attempts",
+            "type": "integer",
+            "default": 3
+          },
+          "startDate": {
+            "type": "date",
+            "definition": "the starting date. If Locker.verifyed.online The server date will be used as reference",
+            "default": "Date()"
+          },
+          "endDate": {
+            "type": "date",
+            "definition": "the ending date. If Locker.verifyed.online The server date will be used as reference",
+            "default": "Date()"
+          },
+          "gems": {
+            "description": "Thoses data gems will be return on success (the gems are crypted client side)",
+            "type": "string",
+            "default": "$Default.NO_GEM",
+            "cryptable":true
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "urdMode": false
+    }
+  }
+}

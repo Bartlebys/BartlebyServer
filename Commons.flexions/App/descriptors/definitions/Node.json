@@ -1,0 +1,163 @@
+{
+  "name": "Node",
+  "definition": {
+    "description": "Bartleby's Synchronized File System: a node references a collection of blocks that compose a files, or an alias or a folder",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "The type of node is a classifier equivalent to a file extension.",
+        "default": "",
+        "required": true
+      },
+      "relativePath": {
+        "type": "string",
+        "description": "The relative path inside the box",
+        "default": "$Default.NO_PATH",
+        "supervisable": false
+      },
+      "proxyPath": {
+        "type": "string",
+        "description": "A relative path for a proxy file (And the resolved path if nature==.alias)",
+        "supervisable": false
+      },
+      "blocksMaxSize": {
+        "type": "integer",
+        "description": "The max size of a block (defines the average size of the block last block excluded)",
+        "default": "Default.MAX_INT",
+        "supervisable": false
+      },
+      "numberOfBlocks": {
+        "type": "Integer",
+        "description": "The total number of blocks",
+        "supervisable": false,
+        "required":true,
+        "default": 0
+      },
+      "priority": {
+        "type": "integer",
+        "description": "The priority level of the node (is applicated to its block)",
+        "default": "0",
+        "supervisable": false
+      },
+      "nature": {
+        "type": "enum",
+        "instanceOf": "string",
+        "emumPreciseType": "Node.Nature",
+        "description": "The node nature",
+        "enum": [
+          "file",
+          "folder",
+          "alias",
+          "flock"
+        ],
+        "default": ".file",
+        "supervisable": false
+      },
+      "modificationDate": {
+        "type": "Date",
+        "description": "Can be extracted from FileAttributeKey.modificationDate",
+        "supervisable": false
+      },
+      "numberOfBlocks": {
+        "type": "Integer",
+        "description": "The total number of blocks",
+        "supervisable": false,
+        "required":true,
+        "default": 0
+      },
+      "creationDate": {
+        "type": "Date",
+        "description": "Can be extracted from FileAttributeKey.creationDate",
+        "supervisable": false
+      },
+      "referentNodeUID": {
+        "type": "string",
+        "description": "If nature is .alias the UID of the referent node, else can be set to self.UID or not set at all",
+        "supervisable": false
+      },
+      "authorized": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "The list of the authorized User.UID,(if set to [\"*\"] the block is reputed public). Replicated in any Block to allow pre-downloading during node Upload",
+            "type": "string",
+            "default": "[String]()",
+            "supervisable": false,
+            "cryptable": true
+          }
+        }
+      },
+      "size": {
+        "type": "integer",
+        "description": "The size of the file",
+        "default": "Default.MAX_INT",
+        "supervisable": false
+      },
+      "digest": {
+        "type": "string",
+        "description": "The SHA1 digest of the node is the digest of all its blocks digest.",
+        "default": "$Default.NO_DIGEST",
+        "supervisable": true
+      },
+      "compressedBlocks": {
+        "type": "boolean",
+        "description": "If set to true the blocks should be compressed (using LZ4)",
+        "default": "true",
+        "supervisable": false
+      },
+      "cryptedBlocks": {
+        "type": "boolean",
+        "description": "If set to true the blocks will be crypted (using AES256)",
+        "default": "true",
+        "supervisable": false
+      },
+      "uploadProgression": {
+        "schema": {
+          "description": "The upload Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.uploadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "downloadProgression": {
+        "schema": {
+          "description": "The Download Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.downloadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "uploadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "downloadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "assemblyInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an Assembly in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": true,
+      "undoable": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "MasterKey",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "Bartleby's Core: Master keys are used to save a password + a key (mostly in user isolated mode)",
+    "allOf": [
+      {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "description":"The password",
+            "default":"en_EN",
+            "required":true,
+            "cryptable":true
+          },
+          "key": {
+            "type": "string",
+            "description":"the key",
+            "default":"",
+            "required":true,
+            "cryptable":true
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "urdMode": false,
+      "groupable": false
+    }
+  }
+}

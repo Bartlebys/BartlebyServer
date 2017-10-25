@@ -1,0 +1,62 @@
+{
+  "name": "HTTPContext",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "Bartleby's Core: an object that encapsulate the whole http context , request, response",
+    "explicitType": "UnManagedModel, Consignable",
+    "properties": {
+      "caller":{
+        "type": "string",
+        "description": "A descriptive string for developer to identify the calling context",
+        "default": "$Default.NO_NAME",
+        "required":true,
+        "supervisable": false
+      },
+      "code": {
+        "type": "integer",
+        "description": " A developer set code to provide filtering",
+        "default":"Default.MAX_INT",
+        "supervisable": false
+      },
+      "httpStatusCode": {
+        "type": "integer",
+        "description": "The responded HTTP status code",
+        "default": "Default.MAX_INT",
+        "supervisable": false
+      },
+      "relatedURL":{
+        "description":"The related url",
+        "type":"url",
+        "supervisable": false
+      },
+      "request": {
+        "schema": {
+          "description": "The full http request",
+          "$ref": "#/definitions/HTTPRequest",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable":true
+        }
+      },
+      "responseString":{
+        "description":"The responded data stringifyed",
+        "type":"string",
+        "supervisable": false,
+        "serializable": true
+      }
+    ,
+      "message":{
+        "description":"An optional message",
+        "type":"string",
+        "supervisable": false,
+        "serializable": true
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": false,
+      "undoable": false
+    }
+  }
+}

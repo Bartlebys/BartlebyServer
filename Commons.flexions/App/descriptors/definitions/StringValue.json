@@ -1,0 +1,20 @@
+{
+  "name": "StringValue",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "A simple String UnManagedModel",
+    "properties": {
+      "value": {
+        "type": "string",
+        "description": "The value",
+        "default":"",
+        "required":true,
+        "supervisable": false,
+        "serializable": true,
+        "cryptable": false
+      }
+    },
+    "metadata": {
+    }
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "name": "DocumentMetadata",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "Bartleby's Core: Complete implementation in DocumentMetadata.",
+    "allOf": [
+      {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "version": {
+            "type": "integer",
+            "description": "The document version. Allows to detect if migrations logic is required",
+            "default": 1,
+            "supervisable": false
+          },
+          "spaceUID": {
+            "type": "string",
+            "description": "The data space UID can be shared between multiple Documents.",
+            "default": "$Bartleby.createUID()",
+            "supervisable": false
+          },
+          "persistentUID": {
+            "type": "string",
+            "description": "Defines the document UID.",
+            "default": "$Bartleby.createUID()",
+            "supervisable": false
+          },
+          "currentUserUID": {
+            "schema": {
+              "description": "The user UID currently associated to the local instance of the document",
+              "type": "string",
+              "default": "$Default.NO_UID",
+              "supervisable": true,
+              "cryptable": false,
+              "serializable":true
+            }
+          },
+          "currentUserEmail": {
+            "schema": {
+              "description": "The current user email (to be displayed during identity control)",
+              "type": "string",
+              "default": "$Default.VOID_STRING",
+              "supervisable": false,
+              "cryptable": false,
+              "serializable":true
+            }
+          },
+          "currentUserFullPhoneNumber": {
+            "schema": {
+              "description": "The current user full phone number including the prefix (to be displayed during identity control)",
+              "type": "string",
+              "default": "$Default.VOID_STRING",
+              "supervisable": false,
+              "cryptable": false,
+              "serializable":true
+            }
+          },
+          "sugar": {
+            "type": "string",
+            "description": "The sugar (not serialized but loaded from the Bowl)",
+            "default": "$Default.NO_SUGAR",
+            "supervisable": false,
+            "serializable":false,
+            "cryptable":true
+          },
+          "lockerUID": {
+            "type": "string",
+            "description": "The locker UID to be used by the user to obtain the sugar from the locker" ,
+            "default": "$Default.NO_UID",
+            "supervisable": false,
+            "serializable":true,
+            "cryptable":false
+          },
+          "userHasBeenControlled": {
+            "type": "boolean",
+            "description": "Has the current user been controlled",
+            "default": "false",
+            "supervisable": false,
+            "serializable":false
+          },
+          "secondaryAuthFactorRequired": {
+            "type": "boolean",
+            "description": "If set to false the identification chain will by pass the second authentication factor",
+            "default": "true",
+            "supervisable": false,
+            "serializable":true
+          },
+          "isolatedUserMode": {
+            "type": "boolean",
+            "description": "If set true no collaborative server is required.",
+            "default": "false",
+            "supervisable": false,
+            "serializable":true
+          },
+
+          "identificationMethod": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "DocumentMetadata.IdentificationMethod",
+            "description": "The identification method (By cookie or by Key - kvid)",
+            "enum": [
+              "key",
+              "cookie"
+            ],
+            "default": ".key",
+            "supervisable": false
+          },
+          "appGroup": {
+            "type": "string",
+            "description": "You can define a shared app group container identifier \"group.myDomain.com.groupName\")",
+            "supervisable": false,
+            "default":"",
+            "required":true
+          },
+          "identificationValue": {
+            "type": "string",
+            "description": "The current kvid identification value (injected in HTTP headers)",
+            "supervisable": false
+          },
+          "collaborationServerURL": {
+            "type": "url",
+            "description": "The url of the collaboration server",
+            "supervisable": false
+          },
+          "registred": {
+            "type": "boolean",
+            "description": "Should be Set to true only when the document has been correctly registred on collaboration server",
+            "default": "false",
+            "supervisable": false
+          },
+          "changesAreInspectables": {
+            "type": "boolean",
+            "description": "If the changes are inspectable all the changes are stored in KeyChanges objects",
+            "default":"false",
+            "supervisable": false,
+            "serializable": false
+          },
+          "cleanupBoxesWhenClosingDocument": {
+            "type": "boolean",
+            "description": "If set to true the boxes will be deleted when closing the document (Better security) ",
+            "default":"true",
+            "supervisable": false,
+            "serializable": false
+          },
+          "collectionsMetadata": {
+            "schema": {
+              "description": "The collection of CollectionMetadatum ",
+              "type": "array",
+              "items": {
+                "description": "A collection of CollectionMetadatum",
+                "explicitType": "CollectionMetadatum",
+                "default": "[CollectionMetadatum]()",
+                "supervisable": false
+              }
+            }
+          },
+          "statesDictionary": {
+            "explicitType": "[String:Data]",
+            "description": "The States data 'dictionary' to insure document persistency ",
+            "default": "[String:Data]()",
+            "supervisable": false
+          },
+          "URLBookmarkData": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "description": "A collection of KeyedData",
+                "explicitType": "KeyedData",
+                "default": "[KeyedData]()",
+                "supervisable": false
+              }
+            }
+          },
+          "preferredFileName": {
+            "type": "string",
+            "description": "The preferred filename for this document",
+            "supervisable": false
+          },
+          "triggersIndexesDebugHistory": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "description": "used for Core Debug , stores all the indexes by order of reception.",
+                "instanceOf": "integer",
+                "default": "[Int]()",
+                "supervisable": false
+              }
+            }
+          },
+          "ownedTriggersIndexes": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "description": "The persistentcollection of triggers indexes owned by the current user (allows local distinctive analytics even on cloned documents)",
+                "instanceOf": "integer",
+                "default": "[Int]()",
+                "supervisable": false
+              }
+            }
+          },
+          "lastIntegratedTriggerIndex": {
+            "type": "integer",
+            "description": "The index of the last trigger that has been integrated",
+            "default": -1,
+            "supervisable": false
+          },
+          "receivedTriggers": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "description": "A collection Triggers that are temporarly stored before data integration",
+                "$ref": "#/definitions/Trigger",
+                "default": "[Trigger]()",
+                "supervisable": false
+              }
+            }
+          },
+          "operationsQuarantine": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "description": "A collection of PushOperations in Quarantine (check DataSynchronization.md \"Faults\" section for details) ",
+                "$ref": "#/definitions/PushOperation",
+                "default": "[PushOperation]()",
+                "supervisable": false
+              }
+            }
+          },
+          "bunchInProgress": {
+            "type": "boolean",
+            "description": "Do we have operations in progress in the current bunch ?",
+            "default": "false",
+            "supervisable": false,
+            "serializable": false
+          },
+          "totalNumberOfOperations": {
+            "type": "integer",
+            "description": "The highest number that we may have counted",
+            "default": 0,
+            "dynamic": true,
+            "supervisable": false,
+            "serializable": false
+          },
+          "pendingOperationsProgressionState": {
+            "schema": {
+              "description": "The consolidated progression state of all pending operations",
+              "$ref": "#/definitions/Progression",
+              "supervisable": false,
+              "required": false,
+              "serializable": false
+            }
+          },
+          "shouldBeOnline": {
+            "type": "boolean",
+            "description": "When monitoring reachability we need to know if we should be connected to Collaborative server",
+            "default": "false",
+            "supervisable": true
+          },
+          "online": {
+            "type": "boolean",
+            "description": "is the user performing Online",
+            "default": "false",
+            "supervisable": true
+          },
+          "transition": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "DocumentMetadata.Transition",
+            "description": "Is the document transitionning offToOn: offline > online, onToOff: online > offine",
+            "enum": [
+              "none",
+              "offToOn",
+              "onToOff"
+            ],
+            "default": ".none",
+            "supervisable": true,
+            "serializable":false
+          },
+          "pushOnChanges": {
+            "type": "boolean",
+            "description": "If set to true committed object will be pushed as soon as possible.",
+            "default": "false",
+            "supervisable": true
+          },
+          "saveThePassword": {
+            "type": "boolean",
+            "description": "Save the password or not?",
+            "default": "false",
+            "supervisable": true
+          },
+          "cumulatedUpMetricsDuration": {
+            "type": "double",
+            "description": "The sum of all the metrics",
+            "default": 0,
+            "dynamic": true,
+            "supervisable": false,
+            "serializable":true
+          },
+          "totalNumberOfUpMetrics": {
+            "type": "integer",
+            "description": "Total number of metrics since the document creation",
+            "default": 0,
+            "dynamic": true,
+            "supervisable": false,
+            "serializable": true
+          }
+        ,"qosIndice": {
+            "type": "double",
+            "description": "The qos Indice",
+            "default": 0,
+            "dynamic": true,
+            "supervisable": false,
+            "serializable":true
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "urdMode": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "DataValue",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "A simple String UnManagedModel",
+    "properties": {
+      "value": {
+        "type": "Data",
+        "description": "The data value",
+        "required":false,
+        "supervisable": false,
+        "serializable": true,
+        "cryptable": false
+      }
+    },
+    "metadata": {
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "Metrics",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "Bartleby's Core: a value object used to record metrics",
+    "properties": {
+      "referentDocument":{
+        "explicitType": "BartlebyDocument",
+        "description": "The referent document",
+        "required":false,
+        "supervisable": false,
+        "serializable": false
+      },
+
+      "operationName":{
+        "type": "string",
+        "description": "The action name e.g: UpdateUser",
+        "default": "$Default.NO_NAME",
+        "required":true,
+        "supervisable": false
+      },
+      "counter": {
+        "type": "integer",
+        "description": "The metrics entry counter",
+        "default": -1,
+        "supervisable": false
+      },
+      "elapsed":{
+        "description":"The elasped time since app started up.",
+        "type":"double",
+        "default":0,
+        "supervisable": false
+      },
+      "latency":{
+        "description":"The time interval in seconds from the time the request started to the initial response from the server.",
+        "type":"double",
+        "default":"0",
+        "supervisable": false
+      },
+      "requestDuration":{
+        "description":"The time interval in seconds from the time the request started to the time the request completed.",
+        "type":"double",
+        "default":"0",
+        "supervisable": false
+      },
+      "serializationDuration":{
+        "description":" The time interval in seconds from the time the request completed to the time response serialization completed.",
+        "type":"double",
+        "default":"0",
+        "supervisable": false
+      },
+      "totalDuration":{
+        "description":"The time interval in seconds from the time the request started to the time response serialization completed.",
+        "type":"double",
+        "default":"0",
+        "supervisable": false
+      },
+      "httpContext": {
+        "schema": {
+          "description": "The full http context",
+          "$ref": "#/definitions/HTTPContext",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable":true
+        }
+      },"streamOrientation": {
+        "type": "enum",
+        "instanceOf": "string",
+        "emumPreciseType": "Metrics.StreamOrientation",
+        "description": "the verification method",
+        "enum": [
+          "upStream",
+          "downStream"
+        ],
+        "default": ".upStream",
+        "supervisable": false
+      }
+    },
+    "metadata": {
+    }
+  }
+}

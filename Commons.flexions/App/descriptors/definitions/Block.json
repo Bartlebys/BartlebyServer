@@ -1,0 +1,93 @@
+{
+  "name": "Block",
+  "definition": {
+    "description": "Bartleby's Synchronized File System: a block references bytes",
+    "properties": {
+      "digest": {
+        "type": "string",
+        "description": "The SHA1 digest of the block",
+        "default": "$Default.NO_DIGEST",
+        "supervisable": true
+      },
+      "rank": {
+        "type": "integer",
+        "description": "The rank of the Block in the node",
+        "default": 0,
+        "supervisable": false,
+        "required":true
+      },
+      "startsAt": {
+        "type": "integer",
+        "description": "The starting bytes of the block in the Node (== the position of the block in the file)",
+        "default": 0,
+        "supervisable": false,
+        "cryptable": false,
+        "required":true
+      },
+      "size": {
+        "type": "integer",
+        "description": "The size of the Block",
+        "default": "Default.MAX_INT",
+        "supervisable": false
+      },
+      "priority": {
+        "type": "integer",
+        "description": "The priority level of the block (higher priority produces the block to be synchronized before the lower priority blocks)",
+        "default": "0",
+        "supervisable": false
+      },
+      "compressed": {
+        "type": "boolean",
+        "description": "If set to true the blocks should be compressed (using LZ4)",
+        "default": "true",
+        "supervisable": false
+      },
+      "crypted": {
+        "type": "boolean",
+        "description": "If set to true the blocks will be crypted (using AES256)",
+        "default": "true",
+        "supervisable": false
+      },
+      "uploadProgression": {
+        "schema": {
+          "description": "The upload Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.uploadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "downloadProgression": {
+        "schema": {
+          "description": "The Download Progression State (not serializable, not supervisable directly by : self.addChangesSuperviser use self.downloadProgression.addChangesSuperviser)",
+          "$ref": "#/definitions/Progression",
+          "default": "Progression()",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable": false
+        }
+      },
+      "uploadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      },
+      "downloadInProgress": {
+        "type": "boolean",
+        "description": "Turned to true if there is an upload in progress (used for progress consolidation optimization)",
+        "default": "false",
+        "supervisable": false,
+        "serializable": false
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": true,
+      "undoable": true
+    }
+  }
+}

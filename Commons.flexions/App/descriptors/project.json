@@ -1,0 +1,132 @@
+{
+  "project": {
+    "infos": {
+      "description": "This is Bartleby's Commons API descriptor",
+      "projectName": "Bartleby",
+      "company": "[Bartleby's org] (https://bartlebys.org) ",
+      "author": "[Benoit Pereira da Silva] (https://pereira-da-silva.com/contact)",
+      "year": "2017",
+      "version": "1.0.24",
+      "license": {
+        "name": "Proprietary",
+        "url": "https://bartlebys.org/license.html"
+      }
+    },
+    "host": "https://demo.bartlebys.org/www",
+    "tags": [],
+    "schemes": [
+      "https"
+    ],
+    "basePath": "/api/v1",
+    "externalDocs": {
+      "description": "Find out more about Bartleby",
+      "url": "https://bartlebys.org/about/"
+    },
+    "templates": {
+      "paths": {
+        "path": "${BARTLEBYS_MODULE_DIR}/modeling-meta-templates/project/endPoints.json.template.php",
+        "description": "This template generate endpoints paths by parsing entities. It is used by the app during pre-generation phase.",
+        "uid":""
+      },
+      "all":[
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/all/dynamicsSupport.swift.php",
+          "description": "The dynamic deserializer",
+          "uid":""
+        }
+      ],
+      "entities": [
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/entities/managedOrNotModel.swift.templateRouter.php",
+          "description": "Bartleby's swift model or valueObject template",
+          "uid":""
+        },
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/entities/managedModelsCollection.swift.template.php",
+          "description": "Bartleby's swift model collection controller (central piece of the Distributed execution)",
+          "uid":""
+        }
+      ],
+      "project": [
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/project/document.swift.template.php",
+          "description": "Bartleby's swift Document template. (!) Uses a global configurator to deternime what collection to serialize locally.",
+          "uid":"BartlebyDocument",
+          "variables": {
+            "configurator": {
+              "className": "SwiftDocumentConfigurator",
+              "imports": [
+                "${BARTLEBYS_MODULE_DIR}/templates/project/SwiftDocumentConfigurator.php"
+              ],
+              "properties": {
+                "filename": "BartlebyDocument.swift",
+                "includeManagedCollectionForEntityContainingString": [
+                  "User",
+                  "Group",
+                  "Permission",
+                  "Operation",
+                  "Locker",
+                  "Node",
+                  "Block",
+                  "Box",
+                  "LocalizedDatum"
+                ]
+              }
+            },
+            "excludeManagedCollectionForEntityContainingString": [
+              "MasterKey"
+            ]
+
+          }
+        },
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/project/commons.configuration.php.template.php",
+          "description": "Bartleby's commons php configuration template.",
+          "uid":""
+        }
+      ],
+      "actions": [
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/actions/cuds.swift.php",
+          "description": "Bartleby's Swift CUD/UD actions template.",
+          "uid":""
+        },
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/actions/endpoint.php.template.php",
+          "description": "Bartleby's Php CRUD/URD endpoints template.",
+          "uid":""
+        },
+        {
+          "path": "${BARTLEBYS_MODULE_DIR}/templates/actions/endpoint.swift.template.php",
+          "description": "Bartleby's Swift R actions template.",
+          "uid":""
+        }
+      ]
+    },
+    "variables": {
+      "modelsShouldConformToCodable":true,
+      "modelsShouldConformToExposed": true,
+      "modelsShouldConformToNSSecureCoding": false,
+      "modelsShouldConformToMappable": false,
+      "excludeEntitiesWith": [
+      ],
+      "xOSIncludeManagedCollectionForEntityNamed": [
+        "PushOperation"
+      ],
+      "excludeActionsWith": [
+        "ManagedModel",
+        "PushOperation",
+        "Report",
+        "MasterKey"
+      ],
+      "excludeFromServerActionsWith": [],
+      "unDeletableEntitiesWith": [],
+      "unModifiableEntitiesWith": [],
+      "doNotGenerate": [
+        "ManagedMasterKeys"
+      ],
+      "isIncludeInBartlebysCommons": true
+    },
+    "postProcessor": "post-processor.php"
+  }
+}

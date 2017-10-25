@@ -1,0 +1,42 @@
+{
+  "name": "HTTPRequest",
+  "definition": {
+    "nature": "UnManagedModel",
+    "description": "Bartleby's Core: an object that encapsulate the URL Request information",
+    "properties": {
+    "url": {
+      "type": "url",
+      "description": "The url",
+      "supervisable": false
+    },
+      "httpMethod": {
+        "type": "string",
+        "description": "The HTTP method",
+        "default": "GET",
+        "supervisable": false
+      },
+      "headers":{
+        "description":"The Headers",
+        "explicitType":"[String:String]",
+        "supervisable": false
+      },
+      "httpBody":{
+        "type": "data",
+        "description": "This data is sent as the message body of the request",
+        "supervisable": false
+      },
+      "timeout":{
+        "type": "double",
+        "description": "The timeout",
+        "default":10,
+        "supervisable": false
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": false,
+      "undoable": false
+    }
+  }
+}

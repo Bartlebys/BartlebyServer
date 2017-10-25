@@ -1,0 +1,137 @@
+{
+  "name": "User",
+  "definition": {
+    "description": "Bartleby's Core: a user in a specified data Space",
+    "allOf": [
+      {
+        "type": "object",
+        "required": [
+          "spaceUID",
+          "phoneNumber",
+          "password"
+        ],
+        "properties": {
+          "spaceUID": {
+            "type": "string",
+            "description": "The spaceUID. A user with the same credentials can exists within multiple Data space.",
+            "default": "$Bartleby.createUID()"
+          },
+          "verificationMethod": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "User.VerificationMethod",
+            "description": "the verification method",
+            "enum": [
+              "none",
+              "byPhoneNumber",
+              "byEmail"
+            ],
+            "default": ".byPhoneNumber"
+          },
+          "localAssociationID": {
+            "type": "string",
+            "description": "The localAssociationID is an UID used to group accounts that are stored in the KeyChain. The first Created Account determines that UID",
+            "default": "$Default.NO_UID"
+          },
+          "firstname": {
+            "type": "string",
+            "default": "$Bartleby.randomStringWithLength(5)"
+          },
+          "lastname": {
+            "type": "string",
+            "default": "$Bartleby.randomStringWithLength(5)"
+          },
+          "email": {
+            "description": "The user's email. ",
+            "type": "string",
+            "default":"",
+            "required":true
+          },
+          "pseudo": {
+            "description": "The user's pseudo",
+            "type": "string",
+            "default":"",
+            "required":true
+          },
+          "phoneCountryCode": {
+            "description": "The user's phone country code",
+            "type": "string",
+            "default":"",
+            "required":true
+          },
+          "phoneNumber": {
+            "description": "The user's phone number",
+            "type": "string",
+            "default":"",
+            "required":true
+          },
+          "password": {
+            "description": "The user password (erased by the server on READ operations so that string needs imperatively to be Optional)",
+            "type": "string",
+            "required":false,
+            "cryptable": true
+          },
+          "status": {
+            "type": "enum",
+            "instanceOf": "string",
+            "emumPreciseType": "User.Status",
+            "description": "User Status",
+            "enum": [
+              "new",
+              "actived",
+              "suspended"
+            ],
+            "default": ".new"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Notes"
+          },
+          "loginHasSucceed": {
+            "type": "boolean",
+            "description": "set to true on the first successfull login in the session (this property is not serialized)",
+            "default": "false",
+            "supervisable": false,
+            "serializable": false
+          },
+          "isIsolated": {
+            "type": "boolean",
+            "description": "An isolated User is not associated to any Collaborative server",
+            "default": "false",
+            "supervisable": true,
+            "serializable": true
+          },
+          "supportsPasswordMemorization": {
+            "type": "boolean",
+            "description": "Can a user memorize her/his password",
+            "default": "Bartleby.configuration.SUPPORTS_PASSWORD_MEMORIZATION_BY_DEFAULT",
+            "supervisable": true,
+            "serializable": true
+          },
+          "supportsPasswordUpdate": {
+            "type": "boolean",
+            "description": "Can a user update her/his  own password",
+            "default": "Bartleby.configuration.SUPPORTS_PASSWORD_UPDATE_BY_DEFAULT",
+            "supervisable": true,
+            "serializable": true
+          },
+          "supportsPasswordSyndication": {
+            "type": "boolean",
+            "description":"If a local user has the same credentials can her/his password be syndicated",
+            "default": "Bartleby.configuration.SUPPORTS_PASSWORD_SYNDICATION_BY_DEFAULT",
+            "supervisable": true,
+            "serializable": true
+          },
+          "base64Image": {
+            "type": "string",
+            "description": "A JFIF base 64 encoded picture of the user"
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "urdMode": false,
+      "groupable": false
+    }
+  }
+}

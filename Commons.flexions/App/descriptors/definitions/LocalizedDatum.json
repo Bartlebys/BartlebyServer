@@ -1,0 +1,32 @@
+{
+  "name": "LocalizedDatum",
+  "definition": {
+    "description": "An entity used to associate localized name and informations",
+    "allOf": [
+      {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description":"the localized key",
+            "default":"",
+            "required":true
+          },
+          "stringValue": {
+            "type": "string",
+            "description":"The localized string value",
+            "required":false
+          },
+          "dataValue": {
+            "type": "data",
+            "description":"The localized data value",
+            "required":false
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "urdMode": true
+    }
+  }
+}

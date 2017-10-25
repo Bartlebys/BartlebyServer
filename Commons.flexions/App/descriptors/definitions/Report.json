@@ -1,0 +1,46 @@
+{
+  "name": "Report",
+  "definition": {
+    "nature": "Object",
+    "description": "Bartleby's Core: a Report object that can be used for analytics and support purposes",
+    "properties": {
+      "metadata": {
+        "schema": {
+          "description": "The document Metadata (contains highly sensitive data)",
+          "$ref": "#/definitions/DocumentMetadata",
+          "supervisable": false,
+          "cryptable": false,
+          "serializable":true
+        }
+      },
+      "logs": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "A collection logs",
+            "$ref": "#/definitions/LogEntry",
+            "default": "[LogEntry]()",
+            "supervisable": false
+          }
+        }
+      },
+      "metrics": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "A collection metrics",
+            "$ref": "#/definitions/Metrics",
+            "default": "[Metrics]()",
+            "supervisable": false
+          }
+        }
+      }
+    },
+    "metadata": {
+      "urdMode": false,
+      "persistsLocallyOnlyInMemory": false,
+      "persistsDistantly": false,
+      "undoable": false
+    }
+  }
+}

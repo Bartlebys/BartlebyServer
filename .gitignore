@@ -1,0 +1,32 @@
+### OSX template
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+/Flexions/out
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+/files
+/html/files
+.apdisk
+
+# Php Storm 
+.idea
+
+/Commons.flexions/EndPointsFromDefinitions/out.flexions
+/Commons.flexions/App/descriptors/_derived/
+/Commons.flexions/App/_derived/
