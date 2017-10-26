@@ -109,7 +109,7 @@ class Configuration {
 
     // Bartleby's version
     const BARTLEBY_VERSION = "1.0";
-    const BARTLEBY_RELEASE = "";
+    const BARTLEBY_RELEASE = "0";
     const INFORMATIONS_KEY = 'informations';
     const ANONYMOUS = 'anonymous';
 
