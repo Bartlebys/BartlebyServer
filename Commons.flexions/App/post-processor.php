@@ -30,7 +30,7 @@ if (isset($bartlebysCommons_xOS_exportPath)){
                 $deploy->rmPath($bartlebysCommons_xOS_exportPath);
             }
         }
-        $deploy->copytFilesInPackage('/xOS/', $bartlebysCommons_xOS_exportPath, true);
+        $deploy->copyFilesInPackage('/xOS/', $bartlebysCommons_xOS_exportPath, true);
     }
 }else{
     fLog('bartlebysCommons_xOS_exportPath and bartlebysCommons_xOS_exportPath must be defined check your build configuration constants.',true);
