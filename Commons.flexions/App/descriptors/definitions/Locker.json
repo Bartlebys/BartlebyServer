@@ -31,7 +31,7 @@
           "mode": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "Locker.Mode",
+            "enumPreciseType": "Locker.Mode",
             "description": "the locker mode",
             "enum": [
               "autoDestructive",
@@ -42,7 +42,7 @@
           "verificationMethod": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "Locker.VerificationMethod",
+            "enumPreciseType": "Locker.VerificationMethod",
             "description": "the locker mode",
             "enum": [
               "online",
@@ -53,7 +53,7 @@
            "security": {
              "type": "enum",
              "instanceOf": "string",
-             "emumPreciseType": "Locker.Security",
+             "enumPreciseType": "Locker.Security",
              "description": "the locker Security If set to .skipSecondaryAuthFactor mode the GetActivationCode will return the Locker (it skips second auth factor)",
              "enum": [
                "skipSecondaryAuthFactor",

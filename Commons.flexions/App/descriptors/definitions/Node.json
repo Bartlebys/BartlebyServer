@@ -42,7 +42,7 @@
       "nature": {
         "type": "enum",
         "instanceOf": "string",
-        "emumPreciseType": "Node.Nature",
+        "enumPreciseType": "Node.Nature",
         "description": "The node nature",
         "enum": [
           "file",

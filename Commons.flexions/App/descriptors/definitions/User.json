@@ -19,7 +19,7 @@
           "verificationMethod": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "User.VerificationMethod",
+            "enumPreciseType": "User.VerificationMethod",
             "description": "the verification method",
             "enum": [
               "none",
@@ -74,7 +74,7 @@
           "status": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "User.Status",
+            "enumPreciseType": "User.Status",
             "description": "User Status",
             "enum": [
               "new",

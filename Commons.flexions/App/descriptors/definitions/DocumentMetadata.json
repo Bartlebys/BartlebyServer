@@ -97,7 +97,7 @@
           "identificationMethod": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "DocumentMetadata.IdentificationMethod",
+            "enumPreciseType": "DocumentMetadata.IdentificationMethod",
             "description": "The identification method (By cookie or by Key - kvid)",
             "enum": [
               "key",
@@ -266,7 +266,7 @@
           "transition": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "DocumentMetadata.Transition",
+            "enumPreciseType": "DocumentMetadata.Transition",
             "description": "Is the document transitionning offToOn: offline > online, onToOff: online > offine",
             "enum": [
               "none",

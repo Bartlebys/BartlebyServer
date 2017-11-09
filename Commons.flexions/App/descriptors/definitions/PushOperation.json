@@ -38,7 +38,7 @@
           "status": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "PushOperation.Status",
+            "enumPreciseType": "PushOperation.Status",
             "description": "The invocation Status None: on creation, Pending: can be pushed, InProgress: the endpoint has been called, Completed : The end point call has been completed",
             "enum": [
               "none",

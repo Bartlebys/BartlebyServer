@@ -11,7 +11,7 @@
           "storage": {
             "type": "enum",
             "instanceOf": "string",
-            "emumPreciseType": "CollectionMetadatum.Storage",
+            "enumPreciseType": "CollectionMetadatum.Storage",
             "description": "the used file storage",
             "enum": [
               "monolithicFileStorage"
