@@ -27,6 +27,6 @@ Temporary Items
 # Php Storm 
 .idea
 
-/Commons.flexions/EndPointsFromDefinitions/out.flexions
+/Commons.flexions/App/out.flexions
 /Commons.flexions/App/descriptors/_derived/
 /Commons.flexions/App/_derived/
