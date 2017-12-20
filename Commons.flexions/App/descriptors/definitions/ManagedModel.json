@@ -3,7 +3,7 @@
   "definition": {
     "description": "Bartleby's Core: The base of any ManagedModel",
     "type": "object",
-    "explicitType": "NSObject, Collectible, Codable",
+    "explicitType": "Model, Collectible",
     "baseObject":true,
     "properties": {
       "_id": {
