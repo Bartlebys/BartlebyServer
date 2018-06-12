@@ -18,6 +18,11 @@
         "description": "An external unique identifier",
         "default":"",
         "required":true
+      },"externalVersionNumber": {
+        "type": "integer",
+        "description": "An external Version number (sometimes a timestamp) that can be used to define if the object as changed (e.g: used in App layer synchronization feeds)",
+        "default":-1,
+        "required":true
       },
       "creatorUID": {
         "type": "string",
