@@ -10,7 +10,8 @@
           "$ref": "#/definitions/DocumentMetadata",
           "supervisable": false,
           "cryptable": false,
-          "serializable":true
+          "serializable":true,
+          "required": false
         }
       },
       "logs": {
