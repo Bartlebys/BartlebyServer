@@ -14,19 +14,20 @@
           "associatedDocumentUID": {
             "type": "string",
             "description": "The associated document UID.",
-            "cryptable":false
+            "cryptable": false,
+            "required": false
           },
           "subjectUID": {
             "description": "The subject UID you want to lock",
             "type": "string",
             "default": "$Default.NO_UID",
-            "cryptable":false
+            "cryptable": false
           },
           "userUID": {
             "description": "The userUID that can unlock the locker",
             "type": "string",
             "default": "$Default.NO_UID",
-            "cryptable":false
+            "cryptable": false
           },
           "mode": {
             "type": "enum",
@@ -50,22 +51,22 @@
             ],
             "default": ".online"
           },
-           "security": {
-             "type": "enum",
-             "instanceOf": "string",
-             "enumPreciseType": "Locker.Security",
-             "description": "the locker Security If set to .skipSecondaryAuthFactor mode the GetActivationCode will return the Locker (it skips second auth factor)",
-             "enum": [
-               "skipSecondaryAuthFactor",
-               "secondaryAuthFactorRequired"
-             ],
-             "default": ".secondaryAuthFactorRequired"
+          "security": {
+            "type": "enum",
+            "instanceOf": "string",
+            "enumPreciseType": "Locker.Security",
+            "description": "the locker Security If set to .skipSecondaryAuthFactor mode the GetActivationCode will return the Locker (it skips second auth factor)",
+            "enum": [
+              "skipSecondaryAuthFactor",
+              "secondaryAuthFactorRequired"
+            ],
+            "default": ".secondaryAuthFactorRequired"
           },
           "code": {
             "description": "This code should be cryptable / decryptable",
             "type": "string",
             "default": "$Bartleby.randomStringWithLength(6,signs:\"0123456789ABCDEFGHJKMNPQRZTUVW\")",
-            "cryptable":true
+            "cryptable": true
           },
           "numberOfAttempt": {
             "description": "The number of attempts",
@@ -86,7 +87,7 @@
             "description": "Thoses data gems will be return on success (the gems are crypted client side)",
             "type": "string",
             "default": "$Default.NO_GEM",
-            "cryptable":true
+            "cryptable": true
           }
         }
       }

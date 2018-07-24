@@ -17,7 +17,9 @@
           "spaceUID": {
             "description": "The dataSpace UID",
             "type": "string",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
+
           },
           "observationUID": {
             "description": "The observation UID",
@@ -28,12 +30,14 @@
           "senderUID": {
             "description": "The user.UID of the sender",
             "type": "string",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "runUID": {
             "description": "The UID of the instance of Bartleby client that has created the trigger.",
             "type": "string",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "origin": {
             "description": "The action that has initiated the trigger",
@@ -80,7 +84,8 @@
               "items": {
                 "description": "A collection of JSON payload",
                 "explicitType": "Data",
-                "supervisable": false
+                "supervisable": false,
+                "required": false
               }
             }
           }

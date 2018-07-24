@@ -5,17 +5,17 @@
     "description": "Bartleby's Core: an object that encapsulate the whole http context , request, response",
     "explicitType": "UnManagedModel, Consignable",
     "properties": {
-      "caller":{
+      "caller": {
         "type": "string",
         "description": "A descriptive string for developer to identify the calling context",
         "default": "$Default.NO_NAME",
-        "required":true,
+        "required": true,
         "supervisable": false
       },
       "code": {
         "type": "integer",
         "description": " A developer set code to provide filtering",
-        "default":"Default.MAX_INT",
+        "default": "Default.MAX_INT",
         "supervisable": false
       },
       "httpStatusCode": {
@@ -24,10 +24,11 @@
         "default": "Default.MAX_INT",
         "supervisable": false
       },
-      "relatedURL":{
-        "description":"The related url",
-        "type":"url",
-        "supervisable": false
+      "relatedURL": {
+        "description": "The related url",
+        "type": "url",
+        "supervisable": false,
+        "required": false
       },
       "request": {
         "schema": {
@@ -35,21 +36,23 @@
           "$ref": "#/definitions/HTTPRequest",
           "supervisable": false,
           "cryptable": false,
-          "serializable":true
+          "serializable": true,
+          "required": false
         }
       },
-      "responseString":{
-        "description":"The responded data stringifyed",
-        "type":"string",
+      "responseString": {
+        "description": "The responded data stringifyed",
+        "type": "string",
         "supervisable": false,
-        "serializable": true
-      }
-    ,
-      "message":{
-        "description":"An optional message",
-        "type":"string",
+        "serializable": true,
+        "required": false
+      },
+      "message": {
+        "description": "An optional message",
+        "type": "string",
         "supervisable": false,
-        "serializable": true
+        "serializable": true,
+        "required": false
       }
     },
     "metadata": {

@@ -4,31 +4,34 @@
     "nature": "UnManagedModel",
     "description": "Bartleby's Core: an object that encapsulate the URL Request information",
     "properties": {
-    "url": {
-      "type": "url",
-      "description": "The url",
-      "supervisable": false
-    },
+      "url": {
+        "type": "url",
+        "description": "The url",
+        "supervisable": false,
+        "required": false
+      },
       "httpMethod": {
         "type": "string",
         "description": "The HTTP method",
         "default": "GET",
         "supervisable": false
       },
-      "headers":{
-        "description":"The Headers",
-        "explicitType":"[String:String]",
-        "supervisable": false
+      "headers": {
+        "description": "The Headers",
+        "explicitType": "[String:String]",
+        "supervisable": false,
+        "required": false
       },
-      "httpBody":{
+      "httpBody": {
         "type": "data",
         "description": "This data is sent as the message body of the request",
-        "supervisable": false
+        "supervisable": false,
+        "required": false
       },
-      "timeout":{
+      "timeout": {
         "type": "double",
         "description": "The timeout",
-        "default":10,
+        "default": 10,
         "supervisable": false
       }
     },

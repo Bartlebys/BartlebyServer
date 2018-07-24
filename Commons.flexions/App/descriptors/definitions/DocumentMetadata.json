@@ -33,7 +33,7 @@
               "default": "$Default.NO_UID",
               "supervisable": true,
               "cryptable": false,
-              "serializable":true
+              "serializable": true
             }
           },
           "currentUserEmail": {
@@ -43,7 +43,7 @@
               "default": "$Default.VOID_STRING",
               "supervisable": false,
               "cryptable": false,
-              "serializable":true
+              "serializable": true
             }
           },
           "currentUserFullPhoneNumber": {
@@ -53,7 +53,7 @@
               "default": "$Default.VOID_STRING",
               "supervisable": false,
               "cryptable": false,
-              "serializable":true
+              "serializable": true
             }
           },
           "sugar": {
@@ -61,39 +61,38 @@
             "description": "The sugar (not serialized but loaded from the Bowl)",
             "default": "$Default.NO_SUGAR",
             "supervisable": false,
-            "serializable":false,
-            "cryptable":true
+            "serializable": false,
+            "cryptable": true
           },
           "lockerUID": {
             "type": "string",
-            "description": "The locker UID to be used by the user to obtain the sugar from the locker" ,
+            "description": "The locker UID to be used by the user to obtain the sugar from the locker",
             "default": "$Default.NO_UID",
             "supervisable": false,
-            "serializable":true,
-            "cryptable":false
+            "serializable": true,
+            "cryptable": false
           },
           "userHasBeenControlled": {
             "type": "boolean",
             "description": "Has the current user been controlled",
             "default": "false",
             "supervisable": false,
-            "serializable":false
+            "serializable": false
           },
           "secondaryAuthFactorRequired": {
             "type": "boolean",
             "description": "If set to false the identification chain will by pass the second authentication factor",
             "default": "true",
             "supervisable": false,
-            "serializable":true
+            "serializable": true
           },
           "isolatedUserMode": {
             "type": "boolean",
             "description": "If set true no collaborative server is required.",
             "default": "false",
             "supervisable": false,
-            "serializable":true
+            "serializable": true
           },
-
           "identificationMethod": {
             "type": "enum",
             "instanceOf": "string",
@@ -110,18 +109,20 @@
             "type": "string",
             "description": "You can define a shared app group container identifier \"group.myDomain.com.groupName\")",
             "supervisable": false,
-            "default":"",
-            "required":true
+            "default": "",
+            "required": true
           },
           "identificationValue": {
             "type": "string",
             "description": "The current kvid identification value (injected in HTTP headers)",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "collaborationServerURL": {
             "type": "url",
             "description": "The url of the collaboration server",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "registred": {
             "type": "boolean",
@@ -132,14 +133,14 @@
           "changesAreInspectables": {
             "type": "boolean",
             "description": "If the changes are inspectable all the changes are stored in KeyChanges objects",
-            "default":"false",
+            "default": "false",
             "supervisable": false,
             "serializable": false
           },
           "cleanupBoxesWhenClosingDocument": {
             "type": "boolean",
             "description": "If set to true the boxes will be deleted when closing the document (Better security) ",
-            "default":"true",
+            "default": "true",
             "supervisable": false,
             "serializable": false
           },
@@ -175,7 +176,8 @@
           "preferredFileName": {
             "type": "string",
             "description": "The preferred filename for this document",
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "triggersIndexesDebugHistory": {
             "schema": {
@@ -275,7 +277,7 @@
             ],
             "default": ".none",
             "supervisable": true,
-            "serializable":false
+            "serializable": false
           },
           "pushOnChanges": {
             "type": "boolean",
@@ -295,7 +297,7 @@
             "default": 0,
             "dynamic": true,
             "supervisable": false,
-            "serializable":true
+            "serializable": true
           },
           "totalNumberOfUpMetrics": {
             "type": "integer",
@@ -304,14 +306,14 @@
             "dynamic": true,
             "supervisable": false,
             "serializable": true
-          }
-        ,"qosIndice": {
+          },
+          "qosIndice": {
             "type": "double",
             "description": "The qos Indice",
             "default": 0,
             "dynamic": true,
             "supervisable": false,
-            "serializable":true
+            "serializable": true
           }
         }
       }

@@ -4,37 +4,38 @@
     "description": "Bartleby's Core: The base of any ManagedModel",
     "type": "object",
     "explicitType": "Model, Collectible",
-    "baseObject":true,
+    "baseObject": true,
     "properties": {
       "_id": {
         "type": "string",
         "description": "The object unique Identifier is named _id to gains native support in MongoDB - you can use UID as accessor ",
-        "default":"$Default.NO_UID",
-        "required":true,
-        "supervisable":false
+        "default": "$Default.NO_UID",
+        "required": true,
+        "supervisable": false
       },
       "externalID": {
         "type": "string",
         "description": "An external unique identifier",
-        "default":"",
-        "required":true
-      },"externalVersionNumber": {
+        "default": "",
+        "required": true
+      },
+      "externalVersionNumber": {
         "type": "integer",
         "description": "An external Version number (sometimes a timestamp) that can be used to define if the object as changed (e.g: used in App layer synchronization feeds)",
-        "default":-1,
-        "required":true
+        "default": -1,
+        "required": true
       },
       "creatorUID": {
         "type": "string",
         "description": "Collectible protocol: The Creator UID - Can be used for ACL purposes automatically injected in new entities Factories",
         "default": "$Default.NO_UID",
-        "supervisable":false
+        "supervisable": false
       },
       "languageCode": {
         "type": "string",
         "description": "The I18N base language code",
         "default": "$Bartleby.defaultLanguageCode",
-        "supervisable":false
+        "supervisable": false
       },
       "ownedBy": {
         "schema": {
@@ -77,7 +78,8 @@
       },
       "summary": {
         "type": "string",
-        "description": "A human readable model summary. If you want to disclose more information you can adopt the Descriptible protocol."
+        "description": "A human readable model summary. If you want to disclose more information you can adopt the Descriptible protocol.",
+        "required": false
       },
       "ephemeral": {
         "type": "boolean",
@@ -117,7 +119,7 @@
         "type": "integer",
         "description": "The internal commit provisioning counter to discriminate Creation from Update and for possible frequency analysis",
         "default": 0,
-        "required":true,
+        "required": true,
         "scope": "public",
         "supervisable": false,
         "serializable": true

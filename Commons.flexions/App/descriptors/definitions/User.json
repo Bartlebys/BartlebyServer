@@ -44,31 +44,31 @@
           "email": {
             "description": "The user's email. ",
             "type": "string",
-            "default":"",
-            "required":true
+            "default": "",
+            "required": true
           },
           "pseudo": {
             "description": "The user's pseudo",
             "type": "string",
-            "default":"",
-            "required":true
+            "default": "",
+            "required": true
           },
           "phoneCountryCode": {
             "description": "The user's phone country code",
             "type": "string",
-            "default":"",
-            "required":true
+            "default": "",
+            "required": true
           },
           "phoneNumber": {
             "description": "The user's phone number",
             "type": "string",
-            "default":"",
-            "required":true
+            "default": "",
+            "required": true
           },
           "password": {
             "description": "The user password (erased by the server on READ operations so that string needs imperatively to be Optional)",
             "type": "string",
-            "required":false,
+            "required": false,
             "cryptable": true
           },
           "status": {
@@ -85,7 +85,8 @@
           },
           "notes": {
             "type": "string",
-            "description": "Notes"
+            "description": "Notes",
+            "required": false
           },
           "loginHasSucceed": {
             "type": "boolean",
@@ -117,14 +118,15 @@
           },
           "supportsPasswordSyndication": {
             "type": "boolean",
-            "description":"If a local user has the same credentials can her/his password be syndicated",
+            "description": "If a local user has the same credentials can her/his password be syndicated",
             "default": "Bartleby.configuration.SUPPORTS_PASSWORD_SYNDICATION_BY_DEFAULT",
             "supervisable": true,
             "serializable": true
           },
           "base64Image": {
             "type": "string",
-            "description": "A JFIF base 64 encoded picture of the user"
+            "description": "A JFIF base 64 encoded picture of the user",
+            "required": false
           }
         }
       }

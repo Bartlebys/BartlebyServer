@@ -29,7 +29,8 @@
             "explicitType": "ManagedModel",
             "description": "The proxy object (not serializable, not supervisable)",
             "serializable": false,
-            "supervisable": false
+            "supervisable": false,
+            "required": false
           },
           "persistsDistantly": {
             "type": "boolean",

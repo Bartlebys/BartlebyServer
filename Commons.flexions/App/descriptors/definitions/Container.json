@@ -7,7 +7,8 @@
       "password": {
         "type": "string",
         "description": "You can setup a password",
-        "supervisable": false
+        "supervisable": false,
+        "required": false
       },
       "boxes": {
         "schema": {

@@ -4,19 +4,18 @@
     "nature": "UnManagedModel",
     "description": "Bartleby's Core: a value object used to record metrics",
     "properties": {
-      "referentDocument":{
+      "referentDocument": {
         "explicitType": "BartlebyDocument",
         "description": "The referent document",
-        "required":false,
+        "required": false,
         "supervisable": false,
         "serializable": false
       },
-
-      "operationName":{
+      "operationName": {
         "type": "string",
         "description": "The action name e.g: UpdateUser",
         "default": "$Default.NO_NAME",
-        "required":true,
+        "required": true,
         "supervisable": false
       },
       "counter": {
@@ -25,34 +24,34 @@
         "default": -1,
         "supervisable": false
       },
-      "elapsed":{
-        "description":"The elasped time since app started up.",
-        "type":"double",
-        "default":0,
+      "elapsed": {
+        "description": "The elasped time since app started up.",
+        "type": "double",
+        "default": 0,
         "supervisable": false
       },
-      "latency":{
-        "description":"The time interval in seconds from the time the request started to the initial response from the server.",
-        "type":"double",
-        "default":"0",
+      "latency": {
+        "description": "The time interval in seconds from the time the request started to the initial response from the server.",
+        "type": "double",
+        "default": "0",
         "supervisable": false
       },
-      "requestDuration":{
-        "description":"The time interval in seconds from the time the request started to the time the request completed.",
-        "type":"double",
-        "default":"0",
+      "requestDuration": {
+        "description": "The time interval in seconds from the time the request started to the time the request completed.",
+        "type": "double",
+        "default": "0",
         "supervisable": false
       },
-      "serializationDuration":{
-        "description":" The time interval in seconds from the time the request completed to the time response serialization completed.",
-        "type":"double",
-        "default":"0",
+      "serializationDuration": {
+        "description": " The time interval in seconds from the time the request completed to the time response serialization completed.",
+        "type": "double",
+        "default": "0",
         "supervisable": false
       },
-      "totalDuration":{
-        "description":"The time interval in seconds from the time the request started to the time response serialization completed.",
-        "type":"double",
-        "default":"0",
+      "totalDuration": {
+        "description": "The time interval in seconds from the time the request started to the time response serialization completed.",
+        "type": "double",
+        "default": "0",
         "supervisable": false
       },
       "httpContext": {
@@ -61,9 +60,11 @@
           "$ref": "#/definitions/HTTPContext",
           "supervisable": false,
           "cryptable": false,
-          "serializable":true
+          "serializable": true,
+          "required": false
         }
-      },"streamOrientation": {
+      },
+      "streamOrientation": {
         "type": "enum",
         "instanceOf": "string",
         "enumPreciseType": "Metrics.StreamOrientation",
